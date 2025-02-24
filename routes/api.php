@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum', 'age'])->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/test',function(){
@@ -28,3 +31,8 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
+Route::get('/users', [ApiController::class, 'users']);
+Route::get('users/{id}', [ApiController::class, 'user']);
+
+Route::resources(['products' => ProductController::class]);
+Route::resources(['/orders'=>OrderController::class]);
