@@ -39,11 +39,6 @@ Laravel is a modern PHP framework designed to make web development easier, faste
    - Role-based access control
    - API authentication using Laravel Sanctum
 
-### 7. Service Providers and Dependency Injection
-   - How Laravel handles dependencies
-   - Registering services in the container
-   - Creating custom service providers
-
 ### laravel cli 
 
  ``` bash
